@@ -1,30 +1,41 @@
-// Array of random messages
-const messages = [
-  "Keep pushing forward!",
-  "Believe in yourself and all that you are.",
-  "You are stronger than you think.",
-  "Every day is a new opportunity.",
-  "Mistakes are proof that you are trying.",
-  "Stay positive, work hard, make it happen.",
-  "Your only limit is your mind.",
-  "Success is not for the lazy.",
-  "Dream it. Wish it. Do it.",
-  "Focus on the good.",
-  "Make today amazing!",
-];
+// Arrays for different categories
+const messages = {
+  motivational: [
+      "Keep pushing forward!",
+      "Believe in yourself and all that you are.",
+      "You are stronger than you think.",
+      "Every day is a new opportunity.",
+      "Mistakes are proof that you are trying.",
+      "Stay positive, work hard, make it happen."
+  ],
+  funny: [
+      "Why don’t scientists trust atoms? Because they make up everything!",
+      "I told my computer I needed a break, and now it won’t stop sending me Kit-Kats.",
+      "Why don’t skeletons fight each other? They don’t have the guts.",
+      "I would tell you a construction pun, but I’m still working on it."
+  ],
+  inspirational: [
+      "The only way to do great work is to love what you do.",
+      "Don’t watch the clock; do what it does. Keep going.",
+      "The best time to plant a tree was 20 years ago. The second best time is now.",
+      "Act as if what you do makes a difference. It does."
+  ]
+};
 
 // Function to generate a random message
-function generateRandomMessage() {
-  const randomIndex = Math.floor(Math.random() * messages.length);
-  return messages[randomIndex];
+function generateRandomMessage(category) {
+  const selectedMessages = messages[category];
+  const randomIndex = Math.floor(Math.random() * selectedMessages.length);
+  return selectedMessages[randomIndex];
 }
 
-// Get the button and message box elements
-const generateBtn = document.getElementById("generate-btn");
-const messageBox = document.getElementById("message-box");
+// Get elements from the DOM
+const generateBtn = document.getElementById('generate-btn');
+const messageBox = document.getElementById('message-box');
 
-// Add an event listener to the button to generate a message when clicked
-generateBtn.addEventListener("click", () => {
-  const message = generateRandomMessage();
+// Event listener to generate a random message
+generateBtn.addEventListener('click', () => {
+  const category = document.getElementById('category-select').value;
+  const message = generateRandomMessage(category);
   messageBox.textContent = message;
 });
