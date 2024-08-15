@@ -39,3 +39,11 @@ generateBtn.addEventListener('click', () => {
   const message = generateRandomMessage(category);
   messageBox.textContent = message;
 });
+
+// JavaScript to handle social media sharing
+document.getElementById('share-twitter').addEventListener('click', () => {
+  const message = messageBox.textContent;
+  const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(message)}`;
+  window.open(twitterUrl, '_blank');
+});
+
